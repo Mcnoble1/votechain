@@ -5,6 +5,10 @@ export interface Proposal {
   title: string;
   description: string;
   deadline: string;
+  voteCount?: {
+    yes: number;
+    no: number;
+  };
 }
 
 export interface PinataResponse {
@@ -16,5 +20,14 @@ export interface PinataResponse {
 export interface Credential {
   type: string;
   createdAt: string;
-  [key: string]: any;
+  address: string;
+  hash: string;
+  status: 'active' | 'revoked';
+}
+
+export interface VoteRecord {
+  proposalId: number;
+  vote: 'yes' | 'no';
+  credentialHash: string;
+  timestamp: string;
 }
